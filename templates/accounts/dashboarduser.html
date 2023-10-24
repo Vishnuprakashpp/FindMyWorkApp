@@ -1,0 +1,126 @@
+{% extends 'customerbase.html' %}
+{% load static %}
+{% block content %}
+
+
+            <div id="content">
+
+            <div class="container-fluid mb-4" id='blocker'>
+                <h3 class="text-dark mb-4"><strong>Generate Service Request</strong></h3>
+                {% include 'partials/_alerts.html' %}
+                <div class="card" style="margin-bottom: 20px;">
+                    <div class="card-body text-left">
+                        <form method="POST" enctype="multipart/form-data">
+
+                          {% csrf_token %}
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Select Service</label>
+                                    <select class="form-control" name="service" id="exampleFormControlSelect1" required>
+                                      <option class='bg-light text-dark' disabled='true' selected>-- Select the service you need --</option>
+                                      <option value="plumber">Plumber</option>
+                                      <option value="house painter">House Painter</option>
+                                      <option value="car painter">Car Painter</option>
+                                      <option value="carpenter">Carpenter</option>
+                                      <option value="electrician">Electrician</option>
+                                    </select>
+                                  </div>
+
+                                <div class="form-row">
+                                    <div class="col">
+                                      <small class="form-text" style="font-size: 14px;">Additional Details</small>
+                                      <textarea class="form-control" name='details' required>
+                                      </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <label for="exampleFormControlSelect1">Preferred Time</label>
+                                    <select class="form-control"  name="time" id="exampleFormControlSelect1" required>
+                                      <option selected disabled>-- Select Your Time --</option>
+                                      <option value="08:00 - 09 : 00">08:00 - 09 : 00</option>
+                                      <option value="09:00 - 10 : 00">09:00 - 10 : 00</option>
+                                      <option value="10:00 - 11 : 00">10:00 - 11 : 00</option>
+                                      <option value="11:00 - 12 : 00">11:00 - 12 : 00</option>
+                                      <option value="12:00 - 13 : 00">12:00 - 13 : 00</option>
+                                      <option value="13:00 - 14 : 00">13:00 - 14 : 00</option>
+                                      <option value="14:00 - 15 : 00">14:00 - 15 : 00</option>
+                                      <option value="15:00 - 16 : 00">15:00 - 16 : 00</option>
+                                      <option value="16:00 - 17 : 00">16:00 - 17 : 00</option>
+                                      <option value="17:00 - 18 : 00">17:00 - 18 : 00</option>
+                                      <option value="18:00 - 19 : 00">18:00 - 19 : 00</option>
+                                      <option value="19:00 - 20 : 00">19:00 - 20 : 00</option>
+                                    </select>
+                                  </div>
+
+
+                                  <div class="">
+                                    <div class="form-row">
+                                      <div class="form-group col-md-6">
+                                        <label for="inputContact">Contact Number</label>
+                                        <input type="text" name="contact" class="form-control" id="inputContact" value="{{ data.number }}">
+                                      </div>
+                                        <div class="form-group col-md-6">
+                                          <label for="inputEmail4">Email</label>
+                                            <input type="email" name="email" class="form-control" id="inputEmail4" value="{{ user.email }}">
+                                          </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="inputAddress">Address</label>
+                                          {% if data.addressl1 %}
+                                            <input type="text" name="addressl1" class="form-control" id="inputAddress"  value="{{ data.addressl1 }}">
+                                          {% else %}
+                                            <input type="text" name="addressl1" class="form-control" id="inputAddress" placeholder="1234 Main St" ">
+                                          {% endif %}
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="inputAddress2">Address 2</label>
+                                          {% if data.addressl2 %}
+                                            <input type="text" name="addressl2" class="form-control" id="inputAddress2" value="{{ data.addressl2 }}">
+                                          {% else %}
+                                            <input type="text" name="addressl2" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                          {% endif %}
+                                        </div>
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6">
+                                            <label for="inputCity">City</label>
+                                            {% if data.city %}
+                                              <input type="text" name="city" class="form-control" id="inputCity" value="{{ data.city }}">
+                                            {% else %}
+                                              <input type="text" name="city" class="form-control" id="inputCity">
+                                            {% endif %}
+                                          </div>
+                                          <div class="form-group col-md-4">
+                                            <label for="inputCity">State</label>
+                                            {% if data.state%}
+                                            <input type="text" name="state" class="form-control" id="inputState" value="{{data.state}}">
+                                            {% else %}
+                                            <input type="text" name="state" class="form-control" id="inputState">
+                                            {% endif %}
+                                          </div>
+                                          <div class="form-group col-md-2">
+                                            <label for="inputZip">Zip</label>
+                                            {% if data.code %}
+                                            <input type="text" name="code" class="form-control" id="inputZip" value='{{data.code}}'>
+                                            {% else %}
+                                            <input type="text" name="code" class="form-control" id="inputZip">
+                                            {% endif %}
+                                          </div>
+                                        </div>
+
+                                  </div>
+
+                                <button class="btn text-uppercase" type="submit" style="width: 125px;background-color:#F99615; color:white;">Submit</button>
+                              </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- </div> -->
+
+
+
+
+{% endblock %}

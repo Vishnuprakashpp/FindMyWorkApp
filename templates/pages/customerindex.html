@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div>
+
+      <div class="uk-inline">
+          <img src="{% static 'img/image4.jpg' %}" alt="">
+          <div class="uk-overlay-primary uk-position-cover"></div>
+          <div class="uk-overlay uk-position-center uk-light">
+
+
+
+                <div class="container text-center" >
+                    <h1 class="text-center d-xl-flex ">Get All Service at your Doorstep</h1>
+                    <a class="uk-button rounded uk-button-large " style="color:white; background:#007bff;" href="{% url 'dashboarduser'%}">Go To Dashboard</a>
+
+
+
+          </div>
+      </div>
+
+  </div>
+
+{% endblock %}
